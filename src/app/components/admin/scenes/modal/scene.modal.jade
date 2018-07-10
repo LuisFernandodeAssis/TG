@@ -1,0 +1,21 @@
+section
+  .modal-header
+  .modal-body
+    form(name="sceneForm")
+      .form-group.row
+        .col-md-12
+          label Texto:
+          textarea(style="width: 100%", rows="5", placeholder="Descreva aqui...", ng-model="modalCtrl.scene.text", name="text", required)
+      .form-group.row
+        .col-md-12
+          .input-group
+            label.btn.btn-primary.btn-xs(uib-popover="{{'UPLOAD_IMAGE_MESSAGE' | translate}}", popover-placement="bottom-left", popover-trigger="'mouseenter'")
+              input(type="file", ng-model="modalCtrl.scene.background", name="file", base-sixty-four-input="", maxsize="500", accept="image/*")
+              span.fa.fa-cloud-upload(aria-hidden="true")
+              span(style="margin-left: 5px") escolher imagem
+      .form-group.row
+        .col-md-12
+          span(ng-bind="modalCtrl.scene.background.filename")
+  .modal-footer
+    button.btn.btn-primary(ng-disabled="!sceneForm.$valid", ng-click="modalCtrl.saveScene(modalCtrl.scene)") salvar
+    button.btn.btn-default(ng-click="modalCtrl.closeModal()") cancelar

@@ -1,0 +1,37 @@
+section
+  .row.aligner.border-bottom.flex-direction.space-between
+    .col-xs-12.col-sm-12.col-md-6.col-lg-6.aligner-item
+      select.form-control(ng-if="reportCtrl.isAdmin"
+                        , ng-model="reportCtrl.institutionSelected"
+                        , ng-change="reportCtrl.getInstitutionCourses(reportCtrl.institutionSelected.id)"
+                        , ng-options="institution.company for institution in reportCtrl.institutions track by institution.id")
+        option(value="") --- Todos ---
+      
+      select.form-control(ng-if="!reportCtrl.isAdmin")
+        option(value="") {{::reportCtrl.institutionSelected.company}}
+
+      select.form-control(ng-model="reportCtrl.courseSelected", ng-disabled="!reportCtrl.institutionSelected"
+                          , ng-options="course.name for course in reportCtrl.institutionSelected.courses track by course.code")
+        option(value="") --- Todos ---
+      
+    .col-xs-12.col-md-3.col-lg-3.aligner-item
+      .input-group
+        span.input-group-addon(uib-popover="{{'REPORT_POPOVER' | translate}}", popover-placement="bottom-left", popover-trigger="'mouseenter'") De
+        input.form-control(type="text", ng-model="reportCtrl.filter.startDate", ui-mask="9999/9")
+        span.input-group-addon(uib-popover="{{'REPORT_POPOVER' | translate}}", popover-placement="bottom", popover-trigger="'mouseenter'") Até
+        input.form-control(type="text", ng-model="reportCtrl.filter.endDate", ui-mask="9999/9")
+        
+    .col-xs-12.col-md-3.col-lg-3.aligner-item.button-new.space-around
+      .btn-group.hidden-xs(role="group", aria-label="content-show")
+        button.btn.btn-primary(type="button", ng-click="reportCtrl.template = 'app/shared/report/template/table.view.html'")
+          i.fa.fa-list-ul
+        button.btn.btn-primary(type="button", ng-click="reportCtrl.template = 'app/shared/report/template/card.view.html'")
+          i.fa.fa-th
+
+      .btn-group(role="group", aria-label="report-option")
+        button.btn.btn-primary(type="button", ng-click="reportCtrl.search(true)")
+          i.fa.fa-search
+        button.btn.btn-primary(type="button", ng-click="reportCtrl.download()")
+          i.fa.fa-download
+
+  ng-include(src="reportCtrl.template") 

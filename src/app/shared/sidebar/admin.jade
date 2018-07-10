@@ -1,0 +1,32 @@
+#sidebar-collapse.col-sm-3.col-lg-2.sidebar
+  ul.nav.menu
+    li(ng-click="sbCtrl.isCollapsed = !sbCtrl.isCollapsed; sbCtrl.changeClass('dashboard')", ng-class="sbCtrl.ngClass.dashboard")
+      a
+        i.fa.fa-tachometer.ico-sidebar
+        |  Dashboard
+    div(uib-collapse='sbCtrl.isCollapsed')
+      ul.nav.menu
+        li(ng-click="sbCtrl.goPage('dashboard-institution', {level: 'fatec'})")
+          a.menu-chidren
+            i.fa.fa-area-chart.ico-sidebar
+            |  Fatecs
+        li(ng-click="sbCtrl.goPage('dashboard-institution', {level: 'etec'})")
+          a.menu-chidren
+            i.fa.fa-bar-chart.ico-sidebar
+            |  Etecs
+    li(ng-class='sbCtrl.ngClass.institutions', ng-click="sbCtrl.changeClass('institutions')")
+      a
+        i.fa.fa-university.ico-sidebar
+        |  Instituições
+    li(ng-class='sbCtrl.ngClass.themes', ng-click="sbCtrl.changeClass('themes')")
+      a
+        i.fa.fa-eyedropper.ico-sidebar
+        |  Temas
+    li(ng-class='sbCtrl.ngClass.skills', ng-click="sbCtrl.changeClass('skills')")
+      a
+        i.fa.fa-shield.ico-sidebar
+        |  Competências
+    li(ng-class="sbCtrl.ngClass.report", ng-click="sbCtrl.changeClass('report')")
+      a
+        i.fa.fa-history.ico-sidebar
+        |  Relatório

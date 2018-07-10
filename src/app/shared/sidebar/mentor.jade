@@ -1,0 +1,22 @@
+#sidebar-collapse.col-sm-3.col-lg-2.sidebar
+  ul.nav.menu
+    li(ng-class="sbCtrl.ngClass.dashboard", ng-click="sbCtrl.changeClass('dashboard')")
+      a
+        i.fa.fa-tachometer.ico-sidebar
+        |  Dashboard
+    li(ng-class="sbCtrl.ngClass.students", ng-click="sbCtrl.changeClass('students')")
+      a
+        i.fa.fa-users.ico-sidebar
+        |  Alunos
+    li(ng-class="sbCtrl.ngClass.courses", ng-click="sbCtrl.changeClass('courses')")
+      a(ui-sref="mentor.courses")
+        i.fa.fa-graduation-cap.ico-sidebar
+        |  Cursos
+    li(ng-class="sbCtrl.ngClass.themes", ng-click="sbCtrl.changeClass('themes')")
+      a
+        i.fa.fa-paint-brush.ico-sidebar
+        |  Tema do Jogo
+    li(ng-class="sbCtrl.ngClass.report", ng-click="sbCtrl.changeClass('report')")
+      a
+        i.fa.fa-history.ico-sidebar
+        |  Relatório

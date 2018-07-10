@@ -1,0 +1,17 @@
+section.main-login
+  .col-lg-12.col-md-12.col-xs-12
+    article.login-panel
+      .panel.panel-default
+        .login-header
+          .logo-cps
+        .login-body
+          form(name="loginForm", role='form')
+            fieldset
+              .form-group
+                input.form-control(type='email', ng-model='loginCtrl.userLogin.username', placeholder='E-mail', name='email', autofocus, required)
+              .form-group
+                input.form-control(type='password', ng-model='loginCtrl.userLogin.password', placeholder='Password', name='password', ng-enter="loginCtrl.login(loginCtrl.userLogin)", required)
+              
+              span.btn.btn-primary(ng-click="loginCtrl.login(loginCtrl.userLogin)")
+                i.fa.fa-sign-in.ico-sidebar
+                | Entrar

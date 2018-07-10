@@ -1,0 +1,79 @@
+section
+  .container
+    .panel.panel-primary
+      .panel-heading Meus Dados
+      .panel-body.full-height
+        .row
+          .col-xs-12.col-md-6
+            .input-group
+              span.input-group-addon Nome
+              input.form-control(type='text', ng-model="::studentProfileCtrl.user.name", readonly)
+          .col-xs-12.col-md-3
+            .input-group
+              span.input-group-addon RA
+              input.form-control(type='text', ng-model="::studentProfileCtrl.user.ra", readonly)
+          .col-xs-12.col-md-3
+            .input-group
+              span.input-group-addon Telefone
+              input.form-control(type='text', ng-model="::studentProfileCtrl.user.phone", ui-mask="(99) 9999-9999",readonly)
+        .row
+          .col-xs-12.col-md-6
+            .input-group
+              span.input-group-addon E-mail
+              input.form-control(type='text', ng-model="::studentProfileCtrl.user.username", readonly)
+          .col-xs-12.col-md-6
+            .input-group
+              span.input-group-addon Senha
+              input.form-control(type='{{ studentProfileCtrl.showPassword[studentProfileCtrl.checkboxPassword] }}', ng-model="studentProfileCtrl.user.password", placeholder="nova senha")
+              span.input-group-btn
+                button.btn.btn-default(ng-click='studentProfileCtrl.checkboxPassword = !studentProfileCtrl.checkboxPassword')
+                  i.fa.fa-eye
+                button.btn.btn-primary(ng-disabled="!studentProfileCtrl.user.password", ng-click="studentProfileCtrl.updatePassword(studentProfileCtrl.user)") salvar
+
+    .panel.panel-primary
+      .panel-heading Meu Curso
+      .panel-body.full-height
+        .row
+          .col-xs-12.col-md-2
+            .input-group
+              span.input-group-addon Código
+              input.form-control(type='text', ng-model="::studentProfileCtrl.user.course.code", readonly)
+          .col-xs-12.col-md-7
+            .input-group
+              span.input-group-addon Curso
+              input.form-control(type='text', ng-model="::studentProfileCtrl.user.course.name", readonly)
+          .col-xs-12.col-md-3
+            .input-group
+              span.input-group-addon Período
+              input.form-control(type='text', ng-model="::studentProfileCtrl.user.course.period", readonly)
+
+    .panel.panel-primary
+      .panel-heading Minha Instituição
+      .panel-body.full-height
+        .row
+          .col-xs-12.col-md-3
+            .input-group
+              span.input-group-addon Código
+              input.form-control(type='text', ng-model="::studentProfileCtrl.user.institution.code", readonly)
+          .col-xs-12.col-md-9
+            .input-group
+              span.input-group-addon Razão Social
+              input.form-control(type='text', ng-model="::studentProfileCtrl.user.institution.company", readonly)
+        .row
+          .col-xs-12.col-md-3
+            .input-group
+              span.input-group-addon CNPJ
+              input.form-control(type='text', ng-model="::studentProfileCtrl.user.institution.cnpj", ui-mask="99.999.999/9999-99", readonly)
+          .col-xs-12.col-md-9
+            .input-group
+              span.input-group-addon Cidade
+              input.form-control(type='text', ng-model="::studentProfileCtrl.user.institution.city", readonly)
+    
+    .row
+      .col-xs-12.xs-space-between
+        button.btn.btn-primary(ui-sref="^.result", ng-if="studentProfileCtrl.user.completed")
+          i.fa.fa-gamepad.ico-sidebar
+          | Meu Resultado
+        button.btn.btn-primary(ui-sref="^.game")
+          i.fa.fa-gamepad.ico-sidebar
+          | Jogo

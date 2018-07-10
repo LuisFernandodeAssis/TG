@@ -1,0 +1,27 @@
+
+<section>
+  <div class="row">
+    <div class="col-xs-12 space-between"><i uib-popover="{{'SCENE_MESSAGE' | translate}}" popover-placement="bottom-left" popover-trigger="'mouseenter'" class="fa fa-info-circle ico-large"></i>
+      <div class="btn-group">
+        <button ng-click="scnCtrl.openSceneModal()" class="btn btn-primary">novo</button>
+        <button ng-click="scnCtrl.updateIndexScenes(scnCtrl.allScenes)" class="btn btn-primary">salvar alterações</button>
+      </div>
+    </div>
+  </div>
+  <div id="main-area" ui-sortable ng-model="scnCtrl.allScenes" class="row main-area">
+    <div ng-repeat="scene in scnCtrl.allScenes track by scene.id" class="col-sm-6 col-md-4 col-lg-3">
+      <div class="thumbnail card"><img ng-src="{{scene.background.filename}}" onerror="this.src='assets/images/image_unavailable.png'" alt="{{scene.background.filename}}">
+        <div class="text">
+          <p ng-bind="scene.text" class="text-ellipsis"></p>
+        </div>
+        <div style="padding: 5px;">
+          <div class="space-between align-center border-top-bottom"><i>Questão</i>
+            <div ng-show="!scene.question"><a ng-click="scnCtrl.openQuestionModal(scene)" class="btn btn-primary btn-xs">adicionar</a></div>
+            <div ng-show="scene.question"><a ng-click="scnCtrl.openQuestionModal(scene)" class="btn btn-primary btn-xs">editar</a><a style="margin-left: 5px;" ng-click="scnCtrl.deleteQuestion(scene.id)" class="btn btn-danger btn-xs">excluir</a></div>
+          </div>
+          <div class="space-between"><a ng-click="scnCtrl.openSceneModal(scene)" class="btn btn-primary btn-xs">editar</a><a ng-click="scnCtrl.deleteScene(scene.id)" class="btn btn-danger btn-xs">excluir</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
